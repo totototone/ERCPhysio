@@ -12,13 +12,18 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 	$(".afficherCategorie").click(function(){
-		$(this).children(".categories").show();								
+		console.log($(this).children());		
+		$(".champs").children().children("ul").hide();
+		//$(".catego").children().children("ul").hide();
+		$(this).children().children("ul").show();								
 	});
 });
 
 $(document).ready(function(){
-	$(".afficherSousCategorie").click(function(){
-		$(".sous_categories").children("ul").show();						
+	$(".afficherSousCategorie").click(function(){	
+		console.log($(this).children());
+		$(".catego").children().children("ul").hide();	
+		$(this).children().children("ul").show();						
 	});
 });
 			

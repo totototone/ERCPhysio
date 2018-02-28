@@ -42,7 +42,7 @@ class RegistrationController extends Controller
         }
 
         return $this->render(
-            'register.html.twig',
+            'inscription.html.twig',
             array('form' => $form->createView())
         );
     }

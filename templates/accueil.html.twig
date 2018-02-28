@@ -10,20 +10,21 @@
 
 	<div class="champs_clin">
 		{% for champ in champs %}
-		<div class="afficherCategorie" id="champs">{{champ.name}}
+		<div class="afficherCategorie champs">{{champ.name}}
 		
 			<div class="categories">
-				<ul class="liste">
+				<ul class="liste">					
 					{% for catego in champ.categories %}
-					<li class="afficherSousCategorie catego">{{catego.name}}</li>
+					<li class="afficherSousCategorie catego"><img src="images/fleche.png" class="fleche">{{catego.name}}
 
-					<div class="sous_categories">
-						<ul class="liste2">
-							{% for souscatego in catego.souscategories %}
-								<li class="sous_catego">{{souscatego.name}}</li>
-							{% endfor %}		
-						</ul>
-					</div>
+						<div class="sous_categories">
+							<ul class="liste2">
+								{% for souscatego in catego.souscategories %}
+									<li class="sous_catego"><img src="images/fleche2.png" class="fleche2">{{souscatego.name}}</li>
+								{% endfor %}		
+							</ul>
+						</div>
+					</li>
 					{% endfor %}		
 				</ul>				
 			</div>
