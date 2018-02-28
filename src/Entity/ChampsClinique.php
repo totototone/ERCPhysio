@@ -12,6 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ChampsClinique
 {
+    public function __toString() {
+        return $this->name;
+    }
     /**
      * @var string|null
      *

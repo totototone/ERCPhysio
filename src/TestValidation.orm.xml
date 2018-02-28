@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Symfony\Bundle\MakerBundle\Entity\TestValidation" table="test_validation">
+    <indexes>
+      <index name="FK_test_validation_id" columns="id"/>
+    </indexes>
+    <id name="rightChoice" type="integer" column="right_choice">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="goodCom" type="text" column="good_com" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="badCom" type="text" column="bad_com" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="prev" type="integer" column="prev" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="id" target-entity="Reponses" fetch="LAZY">
+      <join-columns>
+        <join-column name="id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

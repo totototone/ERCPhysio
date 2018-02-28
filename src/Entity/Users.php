@@ -45,8 +45,6 @@ class Users
      */
     private $idRoles;
 
-
-
     /**
      * @return int|null
      */

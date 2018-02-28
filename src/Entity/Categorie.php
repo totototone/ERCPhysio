@@ -12,26 +12,15 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Categorie
 {
+    public function __toString() {
+        return $this->name;
+    }
     /**
      * @var string|null
      *
-     * @ORM\Column(name="name", type="string", length=25, nullable=true)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="rel_prev", type="integer", nullable=true)
-     */
-    private $relPrev;
-
-    /**
-     * @var int|null
-     *
-     * @ORM\Column(name="rel_next", type="integer", nullable=true)
-     */
-    private $relNext;
 
     /**
      * @var int
@@ -70,46 +59,6 @@ class Categorie
     public function setName($name)
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getRelPrev()
-    {
-        return $this->relPrev;
-    }
-
-    /**
-     * @param int|null $relPrev
-     *
-     * @return self
-     */
-    public function setRelPrev($relPrev)
-    {
-        $this->relPrev = $relPrev;
-
-        return $this;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getRelNext()
-    {
-        return $this->relNext;
-    }
-
-    /**
-     * @param int|null $relNext
-     *
-     * @return self
-     */
-    public function setRelNext($relNext)
-    {
-        $this->relNext = $relNext;
 
         return $this;
     }

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="Symfony\Bundle\MakerBundle\Entity\CasClinique" table="cas_clinique">
-    <indexes>
-      <index name="FK_cas_clinique_id_categorie" columns="id_categorie"/>
-    </indexes>
     <unique-constraints>
       <unique-constraint name="name" columns="name"/>
     </unique-constraints>
@@ -15,10 +12,5 @@
         <option name="fixed"/>
       </options>
     </field>
-    <many-to-one field="idCategorie" target-entity="Categorie" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_categorie" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
   </entity>
 </doctrine-mapping>

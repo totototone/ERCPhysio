@@ -2,15 +2,19 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>TEST</title>
+        <title>ERCPhysio</title>
         {% block stylesheets %}
-        <link rel="stylesheet" type="text/css" href="{{ asset('build/app.css') }}">        
+        <link rel="stylesheet" type="text/css" href="{{ asset('build/app.css') }}">  
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
         {% endblock %}
     </head>
 
     <body>
-    	<h1>Ceci est une phrase à but non lucratif.</h1>
-    <script src="{{ asset('build/app.js') }}"></script>
+        {% block body %}{% endblock %}
+        {% block javascripts %}    	
+        <!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+        <script src="{{ asset('build/app.js') }}"></script>
+        {% endblock %}
     </body>
 
 </html>

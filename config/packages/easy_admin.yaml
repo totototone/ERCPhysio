@@ -2,12 +2,15 @@ easy_admin:
     entities:
         # List the entity class name you want to manage
         - App\Entity\CasClinique
+        - App\Entity\CasTest
         - App\Entity\Categorie
-        - App\Entity\ChampsClinique
-        - App\Entity\Hypotheses
+        - App\Entity\ChampsClinique        
         - App\Entity\Questions
         - App\Entity\Reponses
         - App\Entity\Roles
-        - App\Entity\Test
+        - App\Entity\Score
+        - App\Entity\SousCategorie        
         - App\Entity\TestSpe
+        - App\Entity\TestValidation
+        - App\Entity\TestVideo
         - App\Entity\Users

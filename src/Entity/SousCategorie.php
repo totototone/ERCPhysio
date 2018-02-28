@@ -5,12 +5,16 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Test
+ * SousCategorie
  *
+ * @ORM\Table(name="sous_categorie", indexes={@ORM\Index(name="FK_sous_categorie_id_categorie", columns={"id_categorie"})})
  * @ORM\Entity
  */
-class Test
+class SousCategorie
 {
+    public function __toString() {
+        return $this->name;
+    }
     /**
      * @var string|null
      *

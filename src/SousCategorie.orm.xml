@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Symfony\Bundle\MakerBundle\Entity\Test" table="test">
+  <entity name="Symfony\Bundle\MakerBundle\Entity\SousCategorie" table="sous_categorie">
     <indexes>
-      <index name="FK_test_id_categorie" columns="id_categorie"/>
+      <index name="FK_sous_categorie_id_categorie" columns="id_categorie"/>
     </indexes>
-    <unique-constraints>
-      <unique-constraint name="name" columns="name"/>
-    </unique-constraints>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>

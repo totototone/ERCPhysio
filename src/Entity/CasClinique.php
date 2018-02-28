@@ -7,11 +7,14 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CasClinique
  *
- * @ORM\Table(name="cas_clinique", uniqueConstraints={@ORM\UniqueConstraint(name="name", columns={"name"})}, indexes={@ORM\Index(name="FK_cas_clinique_id_categorie", columns={"id_categorie"})})
+ * @ORM\Table(name="cas_clinique", uniqueConstraints={@ORM\UniqueConstraint(name="name", columns={"name"})})
  * @ORM\Entity
  */
 class CasClinique
 {
+    public function __toString() {
+        return $this->name;
+    }
     /**
      * @var string|null
      *
@@ -27,16 +30,6 @@ class CasClinique
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
-    /**
-     * @var \App\Entity\Categorie
-     *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Categorie")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_categorie", referencedColumnName="id")
-     * })
-     */
-    private $idCategorie;
 
 
 
@@ -76,26 +69,6 @@ class CasClinique
     public function setId($id)
     {
         $this->id = $id;
-
-        return $this;
-    }
-
-    /**
-     * @return \App\Entity\Categorie
-     */
-    public function getIdCategorie()
-    {
-        return $this->idCategorie;
-    }
-
-    /**
-     * @param \App\Entity\Categorie $idCategorie
-     *
-     * @return self
-     */
-    public function setIdCategorie(\App\Entity\Categorie $idCategorie)
-    {
-        $this->idCategorie = $idCategorie;
 
         return $this;
     }

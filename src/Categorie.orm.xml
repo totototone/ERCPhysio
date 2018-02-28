@@ -7,19 +7,9 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="name" type="string" column="name" length="25" nullable="true">
+    <field name="name" type="string" column="name" length="255" nullable="true">
       <options>
         <option name="fixed"/>
-      </options>
-    </field>
-    <field name="relPrev" type="integer" column="rel_prev" nullable="true">
-      <options>
-        <option name="unsigned"/>
-      </options>
-    </field>
-    <field name="relNext" type="integer" column="rel_next" nullable="true">
-      <options>
-        <option name="unsigned"/>
       </options>
     </field>
     <many-to-one field="idChampsClinique" target-entity="ChampsClinique" fetch="LAZY">

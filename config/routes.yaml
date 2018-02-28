@@ -1,4 +1,8 @@
-index:
-    path: /
-    controller: App\Controller\HomeController::index
+#index:
+#    path: /test2
+#    controller: App\Controller\HomeController::index
 
+test:
+    path: ^/Accueil
+    controller: App\Controller\AccueilController::accueil
+    methods: [post]

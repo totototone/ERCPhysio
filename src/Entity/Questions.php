@@ -7,17 +7,34 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Questions
  *
- * @ORM\Table(name="questions", indexes={@ORM\Index(name="FK_questions_id_test", columns={"id_test"})})
+ * @ORM\Table(name="questions", indexes={@ORM\Index(name="FK_questions_id_test_video", columns={"id_test_video"})})
  * @ORM\Entity
  */
 class Questions
 {
+    public function __toString() {
+        return $this->name;
+    }
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="stop", type="integer", nullable=true)
+     */
+    private $stop;
+
     /**
      * @var string|null
      *
      * @ORM\Column(name="question", type="text", length=65535, nullable=true)
      */
     private $question;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="reponse", type="text", length=65535, nullable=true)
+     */
+    private $reponse;
 
     /**
      * @var int
@@ -29,16 +46,36 @@ class Questions
     private $id;
 
     /**
-     * @var \App\Entity\Test
+     * @var \App\Entity\TestVideo
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Test")
+     * @ORM\ManyToOne(targetEntity="App\Entity\TestVideo")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_test", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="id_test_video", referencedColumnName="id")
      * })
      */
-    private $idTest;
+    private $idTestVideo;
 
 
+
+    /**
+     * @return int|null
+     */
+    public function getStop()
+    {
+        return $this->stop;
+    }
+
+    /**
+     * @param int|null $stop
+     *
+     * @return self
+     */
+    public function setStop($stop)
+    {
+        $this->stop = $stop;
+
+        return $this;
+    }
 
     /**
      * @return string|null
@@ -56,6 +93,26 @@ class Questions
     public function setQuestion($question)
     {
         $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getReponse()
+    {
+        return $this->reponse;
+    }
+
+    /**
+     * @param string|null $reponse
+     *
+     * @return self
+     */
+    public function setReponse($reponse)
+    {
+        $this->reponse = $reponse;
 
         return $this;
     }
@@ -81,21 +138,21 @@ class Questions
     }
 
     /**
-     * @return \App\Entity\Test
+     * @return \App\Entity\TestVideo
      */
-    public function getIdTest()
+    public function getIdTestVideo()
     {
-        return $this->idTest;
+        return $this->idTestVideo;
     }
 
     /**
-     * @param \App\Entity\Test $idTest
+     * @param \App\Entity\TestVideo $idTestVideo
      *
      * @return self
      */
-    public function setIdTest(\App\Entity\Test $idTest)
+    public function setIdTestVideo(\App\Entity\TestVideo $idTestVideo)
     {
-        $this->idTest = $idTest;
+        $this->idTestVideo = $idTestVideo;
 
         return $this;
     }

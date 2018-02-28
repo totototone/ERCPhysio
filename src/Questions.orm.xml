@@ -2,19 +2,29 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="Symfony\Bundle\MakerBundle\Entity\Questions" table="questions">
     <indexes>
-      <index name="FK_questions_id_test" columns="id_test"/>
+      <index name="FK_questions_id_test_video" columns="id_test_video"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
+    <field name="stop" type="integer" column="stop" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
     <field name="question" type="text" column="question" length="65535" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <many-to-one field="idTest" target-entity="Test" fetch="LAZY">
+    <field name="reponse" type="text" column="reponse" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="idTestVideo" target-entity="TestVideo" fetch="LAZY">
       <join-columns>
-        <join-column name="id_test" referenced-column-name="id"/>
+        <join-column name="id_test_video" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

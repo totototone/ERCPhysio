@@ -1,0 +1,34 @@
+{% extends 'physio.html.twig' %}
+{% block body %}
+
+	<header>
+		<div id="logo"><a href="{{path('accueil')}}">ERCPhysio</a></div>		
+		<button class="btn_deco" type="submit">Déconnexion</button>
+	</header>
+
+	<h1 id="titre">Champs cliniques</h1>
+
+	<div class="champs_clin">
+		{% for champ in champs %}
+		<div class="afficherCategorie" id="champs">{{champ.name}}
+		
+			<div class="categories">
+				<ul class="liste">
+					{% for catego in champ.categories %}
+					<li class="afficherSousCategorie catego">{{catego.name}}</li>
+
+					<div class="sous_categories">
+						<ul class="liste2">
+							{% for souscatego in catego.souscategories %}
+								<li class="sous_catego">{{souscatego.name}}</li>
+							{% endfor %}		
+						</ul>
+					</div>
+					{% endfor %}		
+				</ul>				
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	
+{% endblock %}

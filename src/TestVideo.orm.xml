@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="Symfony\Bundle\MakerBundle\Entity\Hypotheses" table="hypotheses">
-    <indexes>
-      <index name="FK_hypotheses_id_cas_clinique" columns="id_cas_clinique"/>
-    </indexes>
+  <entity name="Symfony\Bundle\MakerBundle\Entity\TestVideo" table="test_video">
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="hypothese" type="text" column="hypothese" length="65535" nullable="true">
+    <field name="scenariosName" type="string" column="scenarios_name" length="50" nullable="true">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <many-to-one field="idCasClinique" target-entity="CasClinique" fetch="LAZY">
-      <join-columns>
-        <join-column name="id_cas_clinique" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
+    <field name="video" type="string" column="video" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
   </entity>
 </doctrine-mapping>

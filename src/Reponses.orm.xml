@@ -3,6 +3,7 @@
   <entity name="Symfony\Bundle\MakerBundle\Entity\Reponses" table="reponses">
     <indexes>
       <index name="FK_reponses_id_questions" columns="id_questions"/>
+      <index name="FK_reponses_right_choice" columns="right_choice"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
@@ -15,6 +16,11 @@
     <many-to-one field="idQuestions" target-entity="Questions" fetch="LAZY">
       <join-columns>
         <join-column name="id_questions" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="rightChoice" target-entity="TestValidation" fetch="LAZY">
+      <join-columns>
+        <join-column name="right_choice" referenced-column-name="right_choice"/>
       </join-columns>
     </many-to-one>
   </entity>

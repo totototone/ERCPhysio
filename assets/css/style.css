@@ -1,8 +1,217 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
 body{
 	background-color: #B7B6B6;
+	font-family: 'Open Sans Condensed', sans-serif;
 }
-/*Page de connexion*/
-h1{
+/*Page des entrées*/
+#phrase{
 	text-align: center;
 	margin-top: 10%;
+	font-size: 70px;
+	color: #5C4394;
 }
+
+#btn_admin, #btn_expert, #btn_inscrire{
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.btn_sup_admin, .btn_admin, .btn_expert, .btn_utilisateur, .btn_inscrire{
+	width: 250px;
+	height: 50px;
+	font-size: 20px;
+	border-radius: 0.5rem;
+	border: 0 solid;
+	background-color: #4F4F4F;
+	color: white;
+}
+
+.btn_sup_admin, .btn_expert{
+	margin-right: 10px;
+}
+
+
+@media screen and (max-width: 530px){
+	.btn_sup_admin, .btn_expert{
+		margin-right: 0px;
+		margin-bottom: 10px;
+	}
+}
+/*Fin page des entrées*/
+
+/*Page connexion et inscription*/
+#cadre_co{
+	margin-right: auto;
+	margin-left: auto;
+	width: 515px;
+	height: 260px;
+	background-color: #4F4F4F;
+	border-radius: 0.5rem;
+	border: 0 solid;
+}
+
+#connexion{
+	text-align: center;
+}
+
+h2{
+	font-size: 40px;
+	color: white;
+	margin-bottom: 15px;
+	margin-top: 5px;
+}
+
+.div_identi{
+	margin-bottom: 10px;
+}
+
+.identi, .mdp{
+	width: 220px;
+	height: 40px;
+	font-size: 15px;
+	color: #5B4394;
+	border-radius: 0.5rem;
+	border: 0 solid;
+	padding-left: 4px;
+}
+
+.btn_connex{
+	width: 140px;
+	height: 42px;
+	font-size: 20px;
+	color: white;
+	margin-top: 28px;
+	border-radius: 0.5rem;
+	border: 0 solid;
+	background-color: #333333;
+}
+/*Fin page de connexion et inscription*/
+
+/*Page d'accueil*/
+header{
+	width: 100%;
+	height: 90px;
+	background-color: #5D4394;
+}
+
+#logo{
+	font-size: 50px;
+	padding-top: 16px;
+	color: white;
+	padding-left: 20px;
+}
+
+.btn_deco{
+	width: 140px;
+	height: 40px;
+	font-size: 20px;
+	color: white;
+	float: right;
+	margin-top: -26px;
+	margin-right: 20px;
+	border: #3D3A8E 0.1rem solid;
+	border-radius: 0.5rem;
+	background-color: #5D4394;
+}
+
+/*.champs_clin{
+	margin-top: 40px;
+	margin-left: 20px;
+	width: 300px;
+	/*border: #5D4394 0.1rem solid;
+	border-left: black;
+	border-top: black;
+	border-bottom: black;
+	float: left;
+}*/
+
+.champs_clin{
+	margin-top: 60px;
+	margin-left: 30px;
+}
+
+#champs{
+	border: #5D4394 0.1rem solid;
+	border-radius: 0.5rem;
+	margin-bottom: 10px;
+	width: 270px;
+	height: 56px;
+	font-size: 30px;
+	font-family: 'Open Sans Condensed', sans-serif;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 3px;
+	background-color: #B7B6B6;
+}
+
+#titre{
+	font-size: 139px;
+	color: #c6c6c6;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform:translate(-30%, -50%);
+}
+
+.categories{
+	margin-top: 42px;
+	position: absolute;
+	margin-left: 800px;
+}
+
+.sous_categories{
+	position: absolute;
+	margin-left: 1200px;
+}
+.liste{
+	font-size: 25px;
+	display: none;
+	float: left;
+}
+

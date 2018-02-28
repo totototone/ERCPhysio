@@ -7,11 +7,14 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * TestSpe
  *
- * @ORM\Table(name="test_spe", indexes={@ORM\Index(name="FK_test_spe_id_categorie", columns={"id_categorie"})})
+ * @ORM\Table(name="test_spe")
  * @ORM\Entity
  */
 class TestSpe
 {
+    public function __toString() {
+        return $this->name;
+    }
     /**
      * @var string|null
      *
@@ -27,16 +30,6 @@ class TestSpe
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
-    /**
-     * @var \App\Entity\Categorie
-     *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Categorie")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_categorie", referencedColumnName="id")
-     * })
-     */
-    private $idCategorie;
 
 
 
@@ -76,26 +69,6 @@ class TestSpe
     public function setId($id)
     {
         $this->id = $id;
-
-        return $this;
-    }
-
-    /**
-     * @return \App\Entity\Categorie
-     */
-    public function getIdCategorie()
-    {
-        return $this->idCategorie;
-    }
-
-    /**
-     * @param \App\Entity\Categorie $idCategorie
-     *
-     * @return self
-     */
-    public function setIdCategorie(\App\Entity\Categorie $idCategorie)
-    {
-        $this->idCategorie = $idCategorie;
 
         return $this;
     }

@@ -6,14 +6,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-class HomeController extends Controller
+class InscriptionController extends Controller
 {
 	/**
-     * @Route("/", name="welcome")
+     * @Route("/inscription", name="connexion")
      */
-	public function index()
+	public function connexion()
     {
-    	return $this->render('physio.html.twig', array(
+    	return $this->render('inscription.html.twig', array(
             'number' => 1,
         ));
         // replace this line with your own code!
