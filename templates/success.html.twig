@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% block body %}
+        <p>{% block text%}
+
+            {{message}}
+            Utilisateurs ajoutés : 
+            {% for user in reussis %}
+                {{user.username}}
+            {% endfor %}
+            Utilisateurs déjà existants, pas ajoutés : 
+            {% for user in rates %}
+                {{user.username}}
+            {% endfor %}
+        {% endblock %}</p>
+        {% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
