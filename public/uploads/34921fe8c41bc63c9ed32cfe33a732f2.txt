@@ -1,0 +1,4 @@
+username;password;email
+juht;1245;poiks
+wesh;wesh;yo
+mpl;526;pok
