@@ -12,18 +12,8 @@ use App\Entity\SousCategorie;
 class AccueilController extends Controller
 {
 
-    /**
-     * @Route("/getcat/{id}", name="getCategorie")
-     */
-    /*public function getCategorie($id)
-    {
-        //$categories = requete;
-        return new Response($id);
-        
-    }*/
-
 	/**
-     * @Route("/accueil", name="accueil")
+     * @Route("/", name="accueil")
      */
     public function accueil()
     {
@@ -45,8 +35,6 @@ class AccueilController extends Controller
                 ->getRepository(SousCategorie::class)
                 ->findBy(["idCategorie" => $categorie->getId()]);;
             }
-
-
         }
 
         dump($champsCliniques);

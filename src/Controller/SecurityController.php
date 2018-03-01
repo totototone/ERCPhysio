@@ -15,7 +15,7 @@ class SecurityController extends Controller
      * @Route("/login", name="login")
      */
     public function login(Request $request, AuthenticationUtils $authUtils)
-{
+    {
     // get the login error if there is one
     $error = $authUtils->getLastAuthenticationError();
 
@@ -26,7 +26,8 @@ class SecurityController extends Controller
         'last_username' => $lastUsername,
         'error'         => $error,
     ));
-  }
+    return $this->redirectToRoute('accueil');
+    }
 }
-
+  
 ?>

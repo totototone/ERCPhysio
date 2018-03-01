@@ -2,13 +2,16 @@
 require('../css/style.css');
 const $ = require('jquery');
 
+
 $(document).ready(function(){
-   	$(".champs").click(function(){
-   		var data = $(this).data('name');
-		console.log(data);
+	$(".afficherCategorie").click(function(){	
+		$(".champs").css("background-color", "#B7B6B6");		
+		$(this).css("background-color", "#5B4394");
+		$(".champs").css("color", "black");
+		$(this).css("color", "white");
+		$(".liste").css("color", "black");									
 	});
 });
-
 
 $(document).ready(function(){
 	$(".afficherCategorie").click(function(){

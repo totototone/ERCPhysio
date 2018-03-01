@@ -21,7 +21,7 @@ class FileController extends Controller
         $upload = new Upload();
         $form = $this->createForm(FichierType::class, $upload);
         $form->handleRequest($request);
-        dump($request);
+        //dump($request);
         if ($form->isSubmitted() && $form->isValid()) {
             // $file stores the uploaded CSV file
             /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
