@@ -2,23 +2,31 @@
 require('../css/style.css');
 const $ = require('jquery');
 
+
 $(document).ready(function(){
-   	$(".champs").click(function(){
-   		var data = $(this).data('name');
-		console.log(data);
+	$(".afficherCategorie").click(function(){	
+		$(".champs").css("background-color", "#B7B6B6");		
+		$(this).css("background-color", "#5B4394");
+		$(".champs").css("color", "black");
+		$(this).css("color", "white");
+		$(".liste").css("color", "black");									
 	});
 });
-
 
 $(document).ready(function(){
 	$(".afficherCategorie").click(function(){
-		$(this).children(".categories").show();								
+		console.log($(this).children());		
+		$(".champs").children().children("ul").hide();
+		//$(".catego").children().children("ul").hide();
+		$(this).children().children("ul").show();								
 	});
 });
 
 $(document).ready(function(){
-	$(".afficherSousCategorie").click(function(){
-		$(".sous_categories").children("ul").show();						
+	$(".afficherSousCategorie").click(function(){	
+		console.log($(this).children());
+		$(".catego").children().children("ul").hide();	
+		$(this).children().children("ul").show();						
 	});
 });
 			

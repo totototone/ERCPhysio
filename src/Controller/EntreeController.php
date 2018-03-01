@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 class EntreeController extends Controller
 {
 	/**
-     * @Route("/", name="welcome")
+     * @Route("/entrees", name="entrees")
      */
 	public function entree()
     {

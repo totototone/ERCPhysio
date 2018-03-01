@@ -2,14 +2,14 @@
 {% block body %}
 	<h1 id="phrase">Ceci est une phrase à but non lucratif.</h1>
 	<div id="btn_admin">
-        <a href=""><input class="btn_sup_admin" type="button" value="Super-Administrateur"></a>
-        <a href=""><input class="btn_admin" type="button" value="Administrateur"></a>
+        <a href="/login"><input class="btn_sup_admin" type="button" value="Super-Administrateur"></a>
+        <a href="/login"><input class="btn_admin" type="button" value="Administrateur"></a>
     </div>
 	<div id="btn_expert">
-        <a href=""><input class="btn_expert" type="button" value="Expert"></a>
-        <a href="/connexion"><input class="btn_utilisateur" type="button" value="Utilisateur"></a>
+        <a href="/login"><input class="btn_expert" type="button" value="Expert"></a>
+        <a href="/login"><input class="btn_utilisateur" type="button" value="Utilisateur"></a>
     </div>
 	<div id="btn_inscrire">
-        <a href="/inscription"><input class="btn_inscrire" type="button" value="S'inscrire"></a>
+        <a href="/register"><input class="btn_inscrire" type="button" value="S'inscrire"></a>
     </div>
 {% endblock %}
