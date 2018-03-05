@@ -20,7 +20,23 @@
 						<div class="sous_categories">
 							<ul class="liste2">
 								{% for souscatego in catego.souscategories %}
-									<li class="sous_catego"><img src="images/fleche2.png" class="fleche2">{{souscatego.name}}</li>
+									<li class="sous_catego"><img src="images/fleche2.png" class="fleche2">{{souscatego.name}}
+
+										<div class="types_test">
+											<ul class="liste3">
+												{% for  in . %}
+												<li class="t_test"><img src="images/fleche2.png" class="fleche2">{{.}}
+
+													<div class="test">
+														<ul class="liste4">
+															{% for  in . %}
+															<li class="num_test"><img src="images/fleche2.png" class="fleche2">{{.}}</li>
+														</ul>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</li>
 								{% endfor %}		
 							</ul>
 						</div>

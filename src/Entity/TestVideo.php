@@ -38,7 +38,18 @@ class TestVideo
      */
     private $id;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\SousCategorie")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_souscategorie", referencedColumnName="id")
+     * })
+     */
+    private $idSousCategorie;
 
+
+
+
+ 
 
     /**
      * @return string|null
@@ -96,6 +107,26 @@ class TestVideo
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdSousCategorie()
+    {
+        return $this->idSousCategorie;
+    }
+
+    /**
+     * @param mixed $idSousCategorie
+     *
+     * @return self
+     */
+    public function setIdSousCategorie($idSousCategorie)
+    {
+        $this->idSousCategorie = $idSousCategorie;
 
         return $this;
     }

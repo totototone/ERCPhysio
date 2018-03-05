@@ -43,7 +43,6 @@ table {
 }
 
 
-
 body{
 	background-color: #B7B6B6;
 	font-family: 'Open Sans Condensed', sans-serif;
@@ -262,7 +261,7 @@ header{
 	top: 50%;
 	left: 50%;
 	transform:translate(-30%, -50%);
-	position: fixed;
+	/*position: fixed;*/
 }
 
 .categories{
@@ -306,4 +305,11 @@ header{
 
 .fleche2{
 	padding-right: 10px;
+}
+
+.liste3{
+	display: none;
+	float: left;
+	width: 250%;
+	font-size: 25px;
 }

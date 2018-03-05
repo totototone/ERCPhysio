@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Score
  *
- * @ORM\Table(name="score", indexes={@ORM\Index(name="FK_score_id_test_video", columns={"id_test_video"}), @ORM\Index(name="FK_score_id_cas_clinique", columns={"id_cas_clinique"}), @ORM\Index(name="FK_score_id_test_spe", columns={"id_test_spe"}), @ORM\Index(name="IDX_32993751BF396750", columns={"id"})})
+ * @ORM\Table(name="score")
  * @ORM\Entity
  */
 class Score
@@ -32,40 +32,18 @@ class Score
     private $id;
 
     /**
-     * @var \App\Entity\Users
+     * @var \App\Entity\User
      *
      * 
      * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="App\Entity\Users")
+     * @ORM\OneToOne(targetEntity="App\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
      * })
      */
     private $idUser;
 
-    /**
-     * @var \App\Entity\CasClinique
-     *
-     * 
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="App\Entity\CasClinique")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_cas_clinique", referencedColumnName="id")
-     * })
-     */
-    private $idCasClinique;
 
-    /**
-     * @var \App\Entity\TestSpe
-     *
-     * 
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="App\Entity\TestSpe")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_test_spe", referencedColumnName="id")
-     * })
-     */
-    private $idTestSpe;
 
     /**
      * @var \App\Entity\TestVideo
