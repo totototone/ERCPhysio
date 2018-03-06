@@ -22,7 +22,7 @@ class AccueilController extends Controller
         ->getRepository(ChampsClinique::class)
         ->findAll();
 
-       // dump($champsCliniques);
+       dump($champsCliniques);
 
         foreach ($champsCliniques as $key => $ChampsClinique) {
 

@@ -13,4 +13,5 @@ easy_admin:
         - App\Entity\TestSpe
         - App\Entity\TestValidation
         - App\Entity\TestVideo
-        - App\Entity\Users
+        
+        
