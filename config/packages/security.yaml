@@ -8,14 +8,19 @@ security:
             cost: 12
 
     # ...
+    role_hierarchy:
+        #ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_ADMIN: ROLE_ADMIN
+        ROLE_USER: ROLE_USER
+        
 
     providers:
         our_db_provider:
             entity:
                 class: App\Entity\User
-                property: username
+                
                 # if you're using multiple entity managers
-                # manager_name: customer
+                # manager_name: customer    
 
     firewalls:
         main:
@@ -23,6 +28,9 @@ security:
             form_login:
                 login_path: login
                 check_path: login
+            logout:
+                path:   /logout
+                target: /
 
             provider: our_db_provider
 
@@ -42,11 +50,8 @@ security:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/import, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/upload, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/entrees, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/accueil, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin, roles: ROLE_USER }
-        - { path: ^/, roles: ROLE_USER }
-
+        - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: /, roles: IS_AUTHENTICATED_ANONYMOUSLY }

@@ -13,27 +13,45 @@ use App\Entity\User;
 
 class FileController extends Controller
 {
+    private function Genere_Password($size)
+    {
+        $password = "";
+        // Initialisation des caractères utilisables
+        $characters = array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
+
+        for($i=0;$i<$size;$i++) //for (initialization; condition; increment-decrement){}The first part initializes the code. The second part is the condition that will continue to run the loop as long as it is true. The last part is what will be run after each iteration of the loop.
+        {
+            $password .= ($i%2) ? strtoupper($characters[array_rand($characters)]) : $characters[array_rand($characters)]; //$password contains ($i%2), strtoupper: renvoie une chaîne en majuscules, array_rand: prend une ou plusieurs valeurs au hasard dans un tableau.
+        }
+
+        return $password;
+    }
+
     /**
      * @Route("/upload", name="upload_new")
      */
     public function new(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
+        $em = $this->getDoctrine()->getManager(); // EntityManager pour la base de données
+
         $upload = new Upload();
         $form = $this->createForm(FichierType::class, $upload);
         $form->handleRequest($request);
+       
         //dump($request);
         if ($form->isSubmitted() && $form->isValid()) {
             // $file stores the uploaded CSV file
             /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
             $file = $upload->getName();
-
             $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
-
             // moves the file to the directory where files are stored
             if($file->move(
                 $this->getParameter('uploads_directory'),
                 $fileName
             )) {
+                $upload->setName($fileName);
+                $em->persist($upload);
+                $em->flush();
                 $utilisateurs = array(); // Tableau qui va contenir les éléments extraits du fichier CSV
                 $row = 0; // Représente la ligne
                 // Import du fichier CSV 
@@ -44,16 +62,20 @@ class FileController extends Controller
                         for ($c = 0; $c < $num; $c++) {
                             $utilisateurs[$row] = array(
                                     "nom" => $data[0],
+                                    "password" => $this->Genere_password(10),
                                     "mail" => $data[1],
-                                    "password" => $data[2],                            
+                                                              
                             );
                         }
+                        //$resultat = array($data[0], $data[1],$this->Genere_password(10));
+                        echo "<pre>";
+                        print_r($utilisateurs);
+                        echo "</pre>";
                     }
                     fclose($handle); 
                     
                 }        
                 
-                $em = $this->getDoctrine()->getManager(); // EntityManager pour la base de données
 
                 $error = false;
                 $reussis = array();
@@ -67,6 +89,7 @@ class FileController extends Controller
             
                     // Encode le mot de passe
                     $password = $utilisateur["password"];
+                    print_r($password);
                     $password = $passwordEncoder->encodePassword($user, $password);
 
 
@@ -96,6 +119,7 @@ class FileController extends Controller
                         $em->persist($user);
                         $em->flush();
                         array_push($reussis,$user);
+
 
                     }
                     else {

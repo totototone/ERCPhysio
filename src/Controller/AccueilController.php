@@ -23,7 +23,7 @@ class AccueilController extends Controller
         ->getRepository(ChampsClinique::class)
         ->findAll();
 
-       // dump($champsCliniques);
+       dump($champsCliniques);
 
         $testVideo = $this->getDoctrine()
         ->getRepository(TestVideo::class)
