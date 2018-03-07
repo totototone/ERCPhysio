@@ -30,7 +30,7 @@ security:
                 check_path: login
             logout:
                 path:   /logout
-                target: /
+                target: /login
 
             provider: our_db_provider
 
