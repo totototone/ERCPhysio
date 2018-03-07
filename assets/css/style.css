@@ -47,7 +47,7 @@ body{
 	background-color: #B7B6B6;
 	font-family: 'Open Sans Condensed', sans-serif;
 }
-/*Page des entrées*/
+/* PAGE ENTREES */
 #phrase{
 	text-align: center;
 	margin-top: 10%;
@@ -81,9 +81,9 @@ body{
 		margin-bottom: 10px;
 	}
 }
-/*Fin page des entrées*/
+/* FIN PAGE ENTREES */
 
-/*Page connexion et inscription*/
+/* PAGE CONNEXION */
 h1{
 	font-size: 100px;
 	text-align: center;
@@ -91,6 +91,7 @@ h1{
 	color: #5D4394;
 	margin-bottom: 40px;
 }
+
 #cadre_co{
 	margin-right: auto;
 	margin-left: auto;
@@ -129,15 +130,6 @@ h1{
 .div_username{
 	margin-bottom: 10px;
 }
-
-/*.username, .mdp .mail .mdp2{
-	width: 220px;
-	height: 40px;
-	font-size: 15px;
-	color: #5B4394;
-	border-radius: 0.5rem;
-	border: 0 solid;	
-}*/
 
 .btn_connex{
 	width: 140px;
@@ -193,9 +185,15 @@ h1{
 	border: 0 solid;
 	background-color: #333333;
 }
-/*Fin page de connexion et inscription*/
+/*FIN PAGE CONNEXION */
 
-/*Page d'accueil*/
+/* PAGE ACCUEIL*/
+
+.container{
+	width: 100%;
+	height: 100%;
+}
+
 header{
 	width: 100%;
 	height: 90px;
@@ -222,21 +220,10 @@ header{
 	background-color: #5D4394;
 }
 
-/*.champs_clin{
-	margin-top: 40px;
-	margin-left: 20px;
-	width: 300px;
-	/*border: #5D4394 0.1rem solid;
-	border-left: black;
-	border-top: black;
-	border-bottom: black;
-	float: left;
-}*/
-
 .champs_clin{
 	margin-top: 60px;
 	margin-left: 30px;
-	width: 18%;
+	width: 300px;
 }
 
 .champs{
@@ -267,12 +254,13 @@ header{
 .categories{
 	margin-top: 42px;
 	position: absolute;
-	margin-left: 36%;
+	margin-left: 550px;
 }
 
 .sous_categories{
 	position: absolute;
-	margin-left: 120%;
+	margin-left: 300px;
+	min-width: 300px;
 }
 
 .liste{
@@ -282,8 +270,8 @@ header{
 }
 
 .catego{
-	margin-bottom: 7%;
-	margin-top: -4%;
+	margin-bottom: 13px;
+	margin-top: -5px;
 }
 
 .fleche{
@@ -291,25 +279,91 @@ header{
 }
 
 .liste2{
-	display: none;
-	float: left;	
-	width: 250%;
+	display: none;	
 	font-size: 25px;
 	margin-top: -26px;
 }
 
 .sous_catego{
-	margin-bottom: 7%;
-	margin-top: -4%;
+	margin-bottom: 13px;
+	margin-top: -5px;
+	width: 320px;
 }
 
 .fleche2{
 	padding-right: 10px;
 }
 
+.div_test{
+	margin-top: 42px;
+	position: absolute;
+	margin-left: 300px;
+}
+
 .liste3{
+	font-size: 25px;
 	display: none;
 	float: left;
-	width: 250%;
-	font-size: 25px;
+	margin-left: 100%;
+	width: 80px;
+	margin-top: -65px;
 }
+
+.test{
+	margin-bottom: 13px;
+	margin-top: -5px;
+	margin-left: -30px;
+}
+/* FIN PAGE ACCUEIL */
+
+/* PAGE UPLOAD */
+
+#upload{
+	width: 100%;	
+}
+
+#cadre_upload{
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 100px;
+	width: 515px;
+	height: 260px;
+	background-color: #4F4F4F;
+	border-radius: 0.5rem;
+	border: 0 solid;
+	text-align: center;
+}
+
+#titre_upload{
+	font-size: 40px;
+	color: white;
+	padding-top: 20px;
+	padding-bottom: 0px;
+}
+
+#cadre_upload form div .required{
+	display: none;
+}
+
+#fichier_name{
+	margin-top: 40px;
+	width: 100%;	
+	text-align: center;
+	font-size: 25px;
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.btn_upload{
+	width: 160px;
+	height: 40px;
+	font-size: 30px;
+	margin-top: 40px;
+	font-family: 'Open Sans Condensed', sans-serif;
+	border-radius: 0.2rem;
+	border: 0 solid;
+	background-color: #333333;
+	color: white;
+}
+
+/* FIN PAGE UPLOAD */
+

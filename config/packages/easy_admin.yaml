@@ -1,13 +1,28 @@
 easy_admin:
     entities:
         # List the entity class name you want to manage
-        - App\Entity\CasClinique
+        - App\Entity\ChampsClinique         
         - App\Entity\Categorie
-        - App\Entity\ChampsClinique        
+        - App\Entity\SousCategorie    
         - App\Entity\Questions
         - App\Entity\Reponses
         - App\Entity\Roles
-        - App\Entity\Score
-        - App\Entity\SousCategorie        
+        - App\Entity\Score                
         - App\Entity\TestVideo
         - App\Entity\User
+        - App\Entity\Upload
+        - App\Entity\CasClinique
+           
+    design:
+        menu:
+            - { entity: 'ChampsClinique', rel: 'champs-clinique'}
+            - { entity: 'Categorie', rel: 'categorie'}
+            - { entity: 'SousCategorie', rel: 'sous-categorie'}
+            - { entity: 'Questions', rel: 'questions'}
+            - { entity: 'Reponses', rel: 'reponses'}
+            - { entity: 'Roles', rel: 'roles'}
+            - { entity: 'Score', rel: 'score'}           
+            - { entity: 'TestVideo', rel: 'test-video'}
+            - { entity: 'User', rel: 'user'}
+            - { entity: 'Upload', rel: 'upload'}
+            - { label: 'Page Upload', url: 'http://localhost:8000/upload' }

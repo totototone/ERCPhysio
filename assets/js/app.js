@@ -29,6 +29,23 @@ $(document).ready(function(){
 		$(this).children().children("ul").show();						
 	});
 });
+
+
+$(document).ready(function(){
+	$(".afficherTest").click(function(){	
+		console.log($(this).children());
+		$(".sous_catego").children().children("ul").hide();	
+		$(this).children().children("ul").show();						
+	});
+});
+
+
+/*$(document).ready(function(){
+	$(".container").click(function(){
+		$(".catego").children().children("ul").hide();
+	});
+});*/
+
 			
 /*$.ajax({
     url: "/getcat/1",

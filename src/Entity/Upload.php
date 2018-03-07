@@ -4,6 +4,11 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+ 
+/**
+ * @ORM\Table(name="csv_upload")
+ * @ORM\Entity(repositoryClass="App\Repository\UploadRepository")
+ */
 
 class Upload
 {
