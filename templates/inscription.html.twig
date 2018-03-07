@@ -1,0 +1,26 @@
+{% extends 'physio.html.twig' %}
+{% block body %}
+	<h1>Ceci est une phrase à but non lucratif.</h1>
+	<div id="cadre_inscri">		
+		<div id="inscription">
+			<h2 class="titre_entree">Inscription</h2>
+			<div id="form">
+				{{ form_start(form) }}	
+				<div class="div_username username">
+					{{ form_row(form.username) }}
+				</div>
+				<div class="div_mail mail">
+					{{ form_row(form.email) }}				
+				</div>
+				<div class="div_mdp mdp">
+					{{ form_row(form.plainPassword.first) }}		
+				</div>
+				<div class="div_mdp2 mdp2">
+					{{ form_row(form.plainPassword.second) }}		
+				</div>
+				<button class="btn_inscri" type="submit">Inscription</button>
+				{{ form_end(form) }}
+			</div>			
+		</div>
+	</div>
+{% endblock %}
