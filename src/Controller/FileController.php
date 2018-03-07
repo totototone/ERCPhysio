@@ -11,6 +11,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Flex\Response;
 use App\Entity\User;
 
+
 class FileController extends Controller
 {
     private function Genere_Password($size)
@@ -26,6 +27,8 @@ class FileController extends Controller
 
         return $password;
     }
+
+    
 
     /**
      * @Route("/upload", name="upload_new")
@@ -67,7 +70,7 @@ class FileController extends Controller
                                                               
                             );
                         }
-                        //$resultat = array($data[0], $data[1],$this->Genere_password(10));
+                        /*$resultat = array($data[0], $data[1],$this->Genere_password(10));*/
                         echo "<pre>";
                         print_r($utilisateurs);
                         echo "</pre>";
@@ -89,7 +92,7 @@ class FileController extends Controller
             
                     // Encode le mot de passe
                     $password = $utilisateur["password"];
-                    print_r($password);
+                    /*print_r($password);*/
                     $password = $passwordEncoder->encodePassword($user, $password);
 
 
@@ -168,5 +171,61 @@ class FileController extends Controller
         // uniqid(), which is based on timestamps
         return md5(uniqid());
     }
+
+    /*private function indexAction($name, \Swift_Mailer $mailer) 
+    {
+    $message = (new \Swift_Message('Hello Email'))
+        ->setSubject('[YourSite] Feedback')
+        ->setFrom(array('noreply@yoursite.com'))
+        ->setTo(array('feedback@yoursite.com'))
+        ->setBody(
+            $this->renderView(
+                // templates/emails/registration.html.twig
+                'emails/registration.html.twig',
+                array('name' => $name)
+            ),
+            'text/html'
+        )
+        /*
+         * If you also want to include a plaintext version of the message
+        ->addPart(
+            $this->renderView(
+                'emails/registration.txt.twig',
+                array('name' => $name)
+            ),
+            'text/plain'
+        )
+        */
+    /*;
+
+    $mailer->send($message);
+    dump($message);
+
+    return $this->render();
+    }*/
+    private function Mail()
+    {
+    $email = 'noreply@ercphysio.com';
+    $object = 'Inscription';
+    $to = $_POST['monstre-plante@live.fr'];
+    $headers  = 'MIME-Version: 1.0' . "\r\n";
+    $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
+    /*$message = $_POST['message'];*/
+    $nom = ['username' => $user->getUsername()];
+    $mail = ['email' => $user->getUsername()];
+    $password = ['password' => $this->Genere_password(10)];
+                                
+
+    $message = "Bonjour ". $nom .",voici vos informations de connexion sur ERCphysio : <br> Identifiant: ". $mail ." <br> Mot de passe: ". $password ."";
+    
+    if (mail($to, $object, $message, $headers)) {
+        echo " ";
+    }
+    else {
+        echo "Le mail n'a pas été envoyé";
+    }
+  }
+    
+
 }
 ?>
