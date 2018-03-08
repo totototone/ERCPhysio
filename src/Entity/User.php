@@ -94,7 +94,13 @@ class User implements UserInterface, \Serializable
 
     public function getRoles()
     {
-        return array('ROLE_USER');
+        if(null !== $this->idRoles && !empty($this->idRoles->getId()) && $this->idRoles->getId() == 2) {
+            return array('ROLE_ADMIN');
+        }
+        else {
+            return array('ROLE_USER');
+        }
+        
     }
 
     public function eraseCredentials()
