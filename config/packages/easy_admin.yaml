@@ -12,6 +12,7 @@ easy_admin:
         - App\Entity\User
         - App\Entity\Upload
         - App\Entity\CasClinique
+            #form: {field : "videos", type : "upload"}
            
     design:
         menu:
