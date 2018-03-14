@@ -8,8 +8,8 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Entity\ChampsClinique;
 use App\Entity\Categorie;
 use App\Entity\TestVideo;
-use App\Entity\Questions;
-use App\Entity\Reponses;
+use App\Entity\Question;
+use App\Entity\Reponse;
 use App\Entity\CasClinique;
 
 
@@ -29,31 +29,37 @@ class TestController extends Controller
         ->getRepository(TestVideo::class)
         ->findOneBy(["id" => $id]);
 
-        $questions = $this->getDoctrine()
-        ->getRepository(Questions::class)
-        ->findOneBy(["idTestVideo" => $id]);
+        $question = $this->getDoctrine()
+        ->getRepository(Question::class)
+        ->findOneBy(["testVideo" => $id]);
 
-        dump($questions);
 
         $reponses = $this->getDoctrine()
-        ->getRepository(Reponses::class)
-        ->findAll();
+        ->getRepository(Reponse::class)
+        ->findBy(["question" => $question->getId()]);
 
-        $cascliniques = $this->getDoctrine()
-        ->getRepository(CasClinique::class)
-        ->findAll();
+        //créer un array des id de questions justes et un array des IDs de toute les questions.
+        $justes = array();
+        $allIds = array();
 
+        foreach ($reponses as $key => $reponse) {
+          if($reponse->getJuste()) {
+            array_push($justes,$reponse->getId());
+          }
+          array_push($allIds,$reponse->getId());
+        }
 
+        $allIds = implode(",",$allIds);
+        $justes = implode(",",$justes);
 
-
-        // $this->get('acme.js_vars')->chartData = $x;
 
         return $this->render('test.html.twig', array(
 
             'test' => $test,
-            'questions' => $questions,
+            'question' => $question,
             'reponses' => $reponses,
-            'cascliniques' => $cascliniques
+            "justes" => $justes,
+            "allIds" => $allIds
         ));
     }
 
@@ -65,24 +71,25 @@ class TestController extends Controller
     public function getQuestion($id_test, $num_question)
     {
         $questions = $this->getDoctrine()
-        ->getRepository(Questions::class)
+        ->getRepository(Question::class)
         ->findBy([
-            "idTest" => $id_test
+            "testVideo" => $id_test
         ]);
 
-        dump($questions);
+        if(isset($questions[$num_question-1]) && !empty($questions[$num_question-1])) {
+          $question = $questions[$num_question-1];
+        }
+        else {
+          return new Response("<h1>Test terminé</h1>");
+        }
 
-        $question = $questions[$num_question-1];
-
-       dump($question);
 
         $reponses = $this->getDoctrine()
-        ->getRepository(Reponses::class)
+        ->getRepository(Reponse::class)
         ->findBy([
-            "idQuestions" => $question
+            "question" => $question
         ]);
 
-        dump($reponses);
 
         $liste = [];
         $juste = [];
@@ -100,8 +107,8 @@ class TestController extends Controller
         $string .= "</div>";
         $string .= "<div id='score'>";
 
-        $score = $_POST['score'];
-        $string .= "Score = " . $score;
+        /*$score = $_POST['score'];
+        $string .= "Score = " . $score;*/
 
         $string .= "</div>";
         $string .= "<div id='question'>";
@@ -135,7 +142,7 @@ class TestController extends Controller
         $x = $num_question;
 
         $string .= "</div>";
-        $string .= "<input type='button' id='buttonq' value='Valider' data-juste=" . $juste . " data-liste=" . $liste . " data-q=" . $q . " data-x=" . $x . " data-score=" . $score . ">";
+        $string .= "<input type='button' id='buttonq' class='button' value='Valider' data-juste=" . $juste . " data-liste=" . $liste . " data-q=" . $q . " data-x=" . $x . " >";
         $string .= "</div>";
 
 

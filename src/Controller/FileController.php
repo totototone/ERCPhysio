@@ -28,7 +28,7 @@ class FileController extends Controller
         return $password;
     }
 
-    
+
 
     /**
      * @Route("/upload", name="upload_new")
@@ -40,7 +40,7 @@ class FileController extends Controller
         $upload = new Upload();
         $form = $this->createForm(FichierType::class, $upload);
         $form->handleRequest($request);
-       
+
         //dump($request);
         if ($form->isSubmitted() && $form->isValid()) {
             // $file stores the uploaded CSV file
@@ -57,7 +57,7 @@ class FileController extends Controller
                 $em->flush();
                 $utilisateurs = array(); // Tableau qui va contenir les éléments extraits du fichier CSV
                 $row = 0; // Représente la ligne
-                // Import du fichier CSV 
+                // Import du fichier CSV
                 if (($handle = fopen($this->get('kernel')->getProjectDir() . '/public/uploads/'.$fileName, "r")) !== FALSE) { // Lecture du fichier, à adapter
                     while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) { // Eléments séparés par un point-virgule, à modifier si necessaire
                         $num = count($data); // Nombre d'éléments sur la ligne traitée
@@ -67,7 +67,7 @@ class FileController extends Controller
                                     "nom" => $data[0],
                                     "password" => $this->Genere_password(10),
                                     "mail" => $data[1],
-                                                              
+
                             );
                         }
                         /*$resultat = array($data[0], $data[1],$this->Genere_password(10));*/
@@ -75,46 +75,46 @@ class FileController extends Controller
                         print_r($utilisateurs);
                         echo "</pre>";
                     }
-                    fclose($handle); 
-                    
-                }        
-                
+                    fclose($handle);
+
+                }
+
 
                 $error = false;
                 $reussis = array();
                 $rates = array();
-                
+
                 // Lecture du tableau contenant les utilisateurs et ajout dans la base de données
                 foreach ($utilisateurs as $utilisateur) {
-                    
+
                     // On crée un objet utilisateur
                     $user = new User();
-            
+
                     // Encode le mot de passe
                     $password = $utilisateur["password"];
                     /*print_r($password);*/
                     $password = $passwordEncoder->encodePassword($user, $password);
 
 
-                  
-                    
-                    
+
+
+
                     // Hydrate l'objet avec les informations provenants du fichier CSV
                     $user->setPassword($password);
                     $user->setUsername($utilisateur["nom"]);
                     $user->setEmail($utilisateur["mail"]);
-                        
+
                     // Enregistrement de l'objet en vue de son écriture dans la base de données
                     $userExists = $this->getDoctrine()
                     ->getRepository(User::class)
                     ->findBy(
-                      ['username' => $user->getUsername()              
+                      ['username' => $user->getUsername()
                     ]);
 
                     $emailExists = $this->getDoctrine()
                     ->getRepository(User::class)
                     ->findBy(
-                      ['email' => $user->getUsername()              
+                      ['email' => $user->getUsername()
                     ]);
 
 
@@ -129,9 +129,9 @@ class FileController extends Controller
                         $error = true;
                         array_push($rates,$user);
                     }
-                    
+
                     // Ecriture dans la base de données
-                    
+
                 } /*endforeach*/
 
                 if($error) {
@@ -172,52 +172,22 @@ class FileController extends Controller
         return md5(uniqid());
     }
 
-    /*private function indexAction($name, \Swift_Mailer $mailer) 
-    {
-    $message = (new \Swift_Message('Hello Email'))
-        ->setSubject('[YourSite] Feedback')
-        ->setFrom(array('noreply@yoursite.com'))
-        ->setTo(array('feedback@yoursite.com'))
-        ->setBody(
-            $this->renderView(
-                // templates/emails/registration.html.twig
-                'emails/registration.html.twig',
-                array('name' => $name)
-            ),
-            'text/html'
-        )
-        /*
-         * If you also want to include a plaintext version of the message
-        ->addPart(
-            $this->renderView(
-                'emails/registration.txt.twig',
-                array('name' => $name)
-            ),
-            'text/plain'
-        )
-        */
-    /*;
-
-    $mailer->send($message);
-    dump($message);
-
-    return $this->render();
-    }*/
+    //pas testé
     private function Mail()
     {
     $email = 'noreply@ercphysio.com';
     $object = 'Inscription';
-    $to = $_POST['monstre-plante@live.fr'];
+    $to = 'monstre-plante@live.fr';
     $headers  = 'MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
     /*$message = $_POST['message'];*/
     $nom = ['username' => $user->getUsername()];
     $mail = ['email' => $user->getUsername()];
     $password = ['password' => $this->Genere_password(10)];
-                                
+
 
     $message = "Bonjour ". $nom .",voici vos informations de connexion sur ERCphysio : <br> Identifiant: ". $mail ." <br> Mot de passe: ". $password ."";
-    
+
     if (mail($to, $object, $message, $headers)) {
         echo " ";
     }
@@ -225,7 +195,7 @@ class FileController extends Controller
         echo "Le mail n'a pas été envoyé";
     }
   }
-    
+
 
 }
 ?>

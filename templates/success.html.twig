@@ -9,14 +9,14 @@
         {% block body %}
         <p>{% block text%}
 
-            {{message}}
-            Utilisateurs ajoutés : 
+            Utilisateurs ajoutés : <br>
             {% for user in reussis %}
-                {{user.username}}
+                {{user.username}} <br>
             {% endfor %}
-            Utilisateurs déjà existants, pas ajoutés : 
+             <br> <hr> <br>
+            Utilisateurs déjà existants, pas ajoutés :
             {% for user in rates %}
-                {{user.username}}
+                {{user.username}} <br>
             {% endfor %}
         {% endblock %}</p>
         {% endblock %}

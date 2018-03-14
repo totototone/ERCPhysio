@@ -59,6 +59,16 @@ header input {
 	cursor: pointer;
 }
 
+.champs, .champs li {
+	cursor: pointer;
+}
+
+#truescreen, #falsescreen {
+	text-align: center;
+	padding-top:100px;
+	box-sizing: border-box;
+}
+
 #logo a {
 	color: $violetClair;
 	text-decoration: none;
@@ -456,7 +466,7 @@ header{
 .blocrep p {
     text-align: left;
 }
-#buttonq {
+.button {
     background-color: $violet;
     height: 50px;
     width: 200px;

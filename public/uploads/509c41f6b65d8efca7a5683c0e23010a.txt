@@ -1,0 +1,8 @@
+Azerty;azerty@email.com
+Samia B;sam@email.com
+Eva G;eva@email.com
+Yoann V;yoann@email.com
+Quentin H;quentin@email.com
+Wesh;wesh@email.com
+Yo;yo@email.com
+Valerie;valerie@email.com

@@ -1,114 +1,49 @@
 {% extends 'physio.html.twig' %}
 {% block body %}
-    <header>
-        <div id="logo">ERCPhysio</div>        
-        <button class="btn_deco" type="submit">Déconnexion</button>
-    </header>
-    {% set idtest = 2 %}
     <div id="pres" class="b">
-    {% for test in tests %}
-        {% if test.id == idtest %}
-            {{test.name}}
-        {% endif %}
-    {% endfor %}
+
+      {{test.name}}
+      <input type="button" class="button" value="Commencer">
+
     </div>
     <div id="truescreen" class="b">
-        Votre réponse est juste !!
+        Votre réponse est juste !!<br><br><br>
         <input type="button" id="truebutton" class="continue" value="Continuer">
     </div>
     <div id="falsescreen" class="b">
-        Votre réponse est fausse !!
+        Votre réponse est fausse !!<br><br><br>
         <input type="button" id="falsebutton" class="continue" value="Continuer">
     </div>
 
     <div id="bigend" class="b">
-    {% for test in tests %}
-        {% if test.id == idtest %}
-            {{test.name}}
-        {% endif %}
-    {% endfor %}
+
+      {{test.name}}
+
     <div id="end">
 
     </div>
-    <input type="button" id="retour" value="Retour">    
+    <input type="button" id="retour" value="Retour">
     </div>
 
     <div id="content" class="b">
     {% block content %}
-        {% set liste = [] %}
-        {% set juste = [] %}
-        {% set listequestions = [] %}
-        {% set total = 0 %}
+      <div id="question">
+        {{question.question}}
+      </div>
 
-        {% for question in questions %}
-            {% if question.idTest.id == idtest %}
-                {% set listequestions = listequestions|merge([question.id]) %}
-                {% set total = total + 1 %}
-            {% endif %}
+
+      <div id="reponses">
+
+        {% for key, reponse in reponses %}
+        <div class="blocrep">
+          <div id="num{{reponse.id}}" class="num">{{key+1}}</div>
+          <p>{{reponse.reponse}}</p><br>
+        </div>
         {% endfor %}
 
-        {% set x = 0 %}
+      </div>
 
-        {% set a = listequestions[x] %}
-
-        <div id="numero">
-            {% set numero = 1 %}
-            {{ numero }} / {{total}}
-        </div>
-
-        <div id="score">
-            {% set score = 0 %}
-            Score = {{ score }}
-        </div>
-
-        <div id="question">
-             
-            {% for question in questions %}
-                {% if question.id == a %}
-                    {{ question.question }} :
-                {% endif %}
-            {% endfor %}
-        </div>
-        <div>
-            {% set nbrep = 0 %}
-            {% for reponse in reponses %}
-                {% if reponse.idQuestions.id == a %}
-                    {% if reponse.juste == 1 %}
-                    {% set nbrep = nbrep + 1 %}
-                    {% endif %}
-                {% endif %}
-            {% endfor %}
-        </div>
-        
-        <div id="reponses">
-            {% set numq = 0 %}
-            {% for reponse in reponses %}
-                {% if reponse.idQuestions.id == a %}
-                    {% set numq = numq + 1 %}
-                    <div class="blocrep">
-                        <div id="num{{ reponse.id }}" class="num">{{ numq }}</div>
-                        <p>{{ reponse.reponse }}</p><br>
-                    </div>
-                    {% set liste = liste|merge([reponse.id]) %}
-                {% endif %}
-            {% endfor %}
-        </div>
-        {% for reponse in reponses %}
-            {% if reponse.idQuestions.id == a %}
-                {% if reponse.juste == 1 %}
-                    {% set juste = juste|merge([reponse.id]) %}
-                {% endif %}
-            {% endif %}
-        {% endfor %}
-        
-        {% set juste = juste|json_encode() %}
-        {% set liste = liste|json_encode() %}
-
-        {% set q = idtest %}
-        {% set x = x + 1 %}
-        
-        <input type="button" id="buttonq" value="Valider" data-juste="{{ juste }}" data-liste="{{ liste }}" data-q="{{ q }}" data-x="{{ x }}" data-score="{{ score }}" data-total="{{ total }}">
-
+      <input type="button" id="buttonq" class="button" value="Valider" data-juste="[{{justes}}]" data-liste="[{{allIds}}]" data-x="{{test.id}}">
     {% endblock %}
     </div>
 {% endblock %}

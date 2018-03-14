@@ -33,12 +33,12 @@ class User implements UserInterface, \Serializable
     /**
      * @var \App\Entity\Roles
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Roles")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Role")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_roles", referencedColumnName="id")
      * })
      */
-    private $idRole;
+    private $role;
 
     /**
      * @Assert\NotBlank()
@@ -87,7 +87,7 @@ class User implements UserInterface, \Serializable
 
     public function getRoles()
     {
-        if(null !== $this->idRole && !empty($this->idRole->getId()) && $this->idRole->getId() == 2) {
+        if(null !== $this->role && !empty($this->role->getId()) && $this->role->getId() == 2) {
             return array('ROLE_ADMIN');
         }
         else {
@@ -228,24 +228,5 @@ class User implements UserInterface, \Serializable
         $this->password = null;
     }
 
-    /**
-     * @return \App\Entity\Roles
-     */
-    public function getIdRoles()
-    {
-        return $this->idRoles;
-    }
-
-    /**
-     * @param \App\Entity\Roles $idRoles
-     *
-     * @return self
-     */
-    public function setIdRoles(\App\Entity\Roles $idRoles)
-    {
-        $this->idRoles = $idRoles;
-
-        return $this;
-    }
 
 }

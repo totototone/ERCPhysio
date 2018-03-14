@@ -11,33 +11,26 @@ $(document).ready(function(){
 		$(this).css("color", "white");
 		$(".liste").css("color", "black");
 	});
-});
 
-$(document).ready(function(){
 	$(".afficherCategorie").click(function(){
 		console.log($(this).children());
 		$(".champs").children().children("ul").hide();
 		//$(".catego").children().children("ul").hide();
 		$(this).children().children("ul").show();
 	});
-});
 
-$(document).ready(function(){
 	$(".afficherSousCategorie").click(function(){
 		console.log($(this).children());
 		$(".catego").children().children("ul").hide();
 		$(this).children().children("ul").show();
 	});
-});
 
-
-$(document).ready(function(){
 	$(".afficherTest").click(function(){
 		console.log($(this).children());
 		$(".sous_catego").children().children("ul").hide();
 		$(this).children().children("ul").show();
 	});
-});
+
 
 
 /*$(document).ready(function(){
@@ -64,26 +57,20 @@ $(document).ready(function(){
 });*/
 
 
-$(document).ready(function () {
     $('#pres').click(function(){
         $('#pres').hide();
     });
-});
 
-$(document).ready(function () {
     $('#truebutton').click(function(){
         $('#truescreen').hide();
     });
-});
 
-$(document).ready(function () {
     $('#falsebutton').click(function(){
         $('#falsescreen').hide();
     });
-});
 
-$(document).ready(function () {
-    $('#content').on("click",function(e){
+
+		$('#content').on("click",function(e){
         $this = $(e.target);
         if($(e.target).hasClass("num")) {
             console.log($this.attr('id'));
@@ -96,10 +83,9 @@ $(document).ready(function () {
             }
         }
 
-    });
-});
+			});
 
-$(document).ready(function () {
+
     $('#content').on("click",function(e){
         $this = $(e.target);
         if($(e.target).is("#buttonq")) {
@@ -127,10 +113,7 @@ $(document).ready(function () {
 
 
 
-            var q = $this.data("q");
 
-            var x = $this.data("x");
-            x++;
 
             var check = [];
 
@@ -144,43 +127,60 @@ $(document).ready(function () {
             justecheck.sort();
 
             var score = $('#buttonq').data('score');
-            var total;
+            /*var total;
 
             if (total.length < 1) {
                 var total = $('#buttonq').data('total');
             }
 
-            console.log(total);
+            console.log(total);*/
 
             if (check.length == justecheck.length) {
                 if(JSON.stringify(check)==JSON.stringify(justecheck)) {
 
                     score++;
                     $('#truescreen').css("visibility", "visible");
+										$('#truescreen').css("display", "inline");
                 }
+								else {
+		                $('#falsescreen').css("visibility", "visible");
+										$('#falsescreen').css("display", "inline");
+		            }
             } else {
                 $('#falsescreen').css("visibility", "visible");
+								$('#falsescreen').css("display", "inline");
             }
-            var idTest = $("#element").data("idtest");
-                $.ajax({
-                    url: "/ERCPhysio/public/getQuestion/"+q+"/"+x,
-                    type: "POST",
-                    data: 'score=' + score,
-                    success: function(data){
-                        $("#content").html(data);
-                    },
-                    error: function() {
-                        $.ajax({
-                            url: "/ERCPhysio/public/end/"+score+"/"+total,
-                            type: "POST",
-                            success: function(data){
-                                $("#end").html(data);
-                            }
-                        })
-                        $('#bigend').css("visibility", "visible");
-                    }
-                });
+
+
+
 
         };
     });
+		var q = 1;
+
+		$('.continue').on("click",function(e){
+
+					var x = $("#buttonq").data("x");
+					q++;
+					$.ajax({
+							url: "/ERCPhysio/public/getQuestion/"+q+"/"+x,
+							type: "POST",
+							success: function(data){
+									$("#content").html(data);
+							},
+							// error: function() {
+							//     $.ajax({
+							//         url: "/ERCPhysio/public/end/"+score+"/"+total,
+							//         type: "POST",
+							//         success: function(data){
+							//             $("#end").html(data);
+							//         }
+							//     })
+							//     $('#bigend').css("visibility", "visible");
+							// }
+					});
+
+
+		});
+
 });
