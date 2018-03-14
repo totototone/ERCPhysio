@@ -1,3 +1,6 @@
+$violet : #5D4394;
+$violetClair : #B7B6B6;
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -44,9 +47,23 @@ table {
 
 
 body{
-	background-color: #B7B6B6;
+	background-color: $violetClair;
 	font-family: 'Open Sans Condensed', sans-serif;
 }
+
+a {
+	color: $violet;
+}
+
+header input {
+	cursor: pointer;
+}
+
+#logo a {
+	color: $violetClair;
+	text-decoration: none;
+}
+
 /* PAGE ENTREES */
 #phrase{
 	text-align: center;
@@ -88,7 +105,7 @@ h1{
 	font-size: 100px;
 	text-align: center;
 	margin-top: 7%;
-	color: #5D4394;
+	color: $violet;
 	margin-bottom: 40px;
 }
 
@@ -100,6 +117,7 @@ h1{
 	background-color: #4F4F4F;
 	border-radius: 0.5rem;
 	border: 0 solid;
+	margin-top: 100px;
 }
 
 #inscription{
@@ -115,14 +133,14 @@ h1{
 	border-radius: 0.5rem;
 	border: 0 solid;
 }
-  
+
 #connexion{
 	text-align: center;
 }
 
 .titre_entree{
 	font-size: 40px;
-	color: white;	
+	color: white;
 	padding-top: 15px;
 	padding-bottom: 20px;
 }
@@ -157,7 +175,7 @@ h1{
 	height: 40px;
 	font-size: 15px;
 	border-radius: 0.5rem;
-	border: 0 solid;	
+	border: 0 solid;
 	/*color: #5B4394;*/
 	margin-bottom: 38px;
 	padding-left: 0px;
@@ -180,7 +198,7 @@ h1{
 	width: 140px;
 	height: 42px;
 	font-size: 20px;
-	color: white;	
+	color: white;
 	border-radius: 0.5rem;
 	border: 0 solid;
 	background-color: #333333;
@@ -197,7 +215,7 @@ h1{
 header{
 	width: 100%;
 	height: 90px;
-	background-color: #5D4394;
+	background-color: $violet;
 }
 
 #logo{
@@ -217,7 +235,7 @@ header{
 	margin-right: 20px;
 	border: #3D3A8E 0.1rem solid;
 	border-radius: 0.5rem;
-	background-color: #5D4394;
+	background-color: $violet;
 }
 
 .champs_clin{
@@ -227,7 +245,7 @@ header{
 }
 
 .champs{
-	border: #5D4394 0.1rem solid;
+	border: $violet 0.1rem solid;
 	border-radius: 0.5rem;
 	margin-bottom: 10px;
 	width: 270px;
@@ -238,7 +256,7 @@ header{
 	justify-content: center;
 	align-items: center;
 	padding-bottom: 3px;
-	background-color: #B7B6B6;
+	background-color: $violetClair;
 }
 
 #titre{
@@ -279,7 +297,7 @@ header{
 }
 
 .liste2{
-	display: none;	
+	display: none;
 	font-size: 25px;
 	margin-top: -26px;
 }
@@ -319,7 +337,7 @@ header{
 /* PAGE UPLOAD */
 
 #upload{
-	width: 100%;	
+	width: 100%;
 }
 
 #cadre_upload{
@@ -347,7 +365,7 @@ header{
 
 #fichier_name{
 	margin-top: 40px;
-	width: 100%;	
+	width: 100%;
 	text-align: center;
 	font-size: 25px;
 	font-family: 'Open Sans Condensed', sans-serif;
@@ -403,7 +421,7 @@ header{
     font-size: 35px;
 }
 .continue {
-    background-color: #5D4394;
+    background-color: $violet;
     height: 50px;
     width: 200px;
     font-size: 25px;
@@ -430,7 +448,7 @@ header{
     height: 40px;
     width: 40px;
     border-radius: 200px;
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -439,7 +457,7 @@ header{
     text-align: left;
 }
 #buttonq {
-    background-color: #5D4394;
+    background-color: $violet;
     height: 50px;
     width: 200px;
     font-size: 25px;
@@ -452,7 +470,7 @@ header{
 }
 
 #score {
-    font-size: 20px;    
+    font-size: 20px;
 }
 #bigend {
     visibility: hidden;
@@ -461,7 +479,7 @@ header{
     font-size: 35px;
 }
 #retour {
-    background-color: #5D4394;
+    background-color: $violet;
     height: 50px;
     width: 200px;
     font-size: 25px;

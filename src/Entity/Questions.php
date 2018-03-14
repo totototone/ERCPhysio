@@ -30,13 +30,6 @@ class Questions
     private $question;
 
     /**
-     * @var string|null
-     *
-     * @ORM\Column(name="reponse", type="text", length=65535, nullable=true)
-     */
-    private $reponse;
-
-    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")

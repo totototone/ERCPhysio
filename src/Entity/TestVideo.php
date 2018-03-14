@@ -16,22 +16,16 @@ class TestVideo
         return $this->name;
     }
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="scenarios_name", type="string", length=50, nullable=true)
      */
-    private $scenariosName;
+    private $name;
 
     /**
-     * @var string|null
-     *
      * @ORM\Column(name="video", type="string", length=50, nullable=true)
      */
     private $video;
 
     /**
-     * @var int
-     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -49,38 +43,44 @@ class TestVideo
 
 
 
- 
-
     /**
-     * @return string|null
+     * Get the value of Name
+     *
+     * @return mixed
      */
-    public function getScenariosName()
+    public function getName()
     {
-        return $this->scenariosName;
+        return $this->name;
     }
 
     /**
-     * @param string|null $scenariosName
+     * Set the value of Name
+     *
+     * @param mixed name
      *
      * @return self
      */
-    public function setScenariosName($scenariosName)
+    public function setName($name)
     {
-        $this->scenariosName = $scenariosName;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * @return string|null
+     * Get the value of Video
+     *
+     * @return mixed
      */
     public function getVideo()
     {
         return $this->video;
     }
-
+ 
     /**
-     * @param string|null $video
+     * Set the value of Video
+     *
+     * @param mixed video
      *
      * @return self
      */
@@ -92,7 +92,9 @@ class TestVideo
     }
 
     /**
-     * @return int
+     * Get the value of Id
+     *
+     * @return mixed
      */
     public function getId()
     {
@@ -100,7 +102,9 @@ class TestVideo
     }
 
     /**
-     * @param int $id
+     * Set the value of Id
+     *
+     * @param mixed id
      *
      * @return self
      */
@@ -112,6 +116,8 @@ class TestVideo
     }
 
     /**
+     * Get the value of Id Sous Categorie
+     *
      * @return mixed
      */
     public function getIdSousCategorie()
@@ -120,7 +126,9 @@ class TestVideo
     }
 
     /**
-     * @param mixed $idSousCategorie
+     * Set the value of Id Sous Categorie
+     *
+     * @param mixed idSousCategorie
      *
      * @return self
      */
@@ -130,4 +138,5 @@ class TestVideo
 
         return $this;
     }
+
 }

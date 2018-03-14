@@ -1,41 +1,41 @@
 // assets/js/app.js
-require('../css/style.css');
+require('../css/style.scss');
 const $ = require('jquery');
 
 
 $(document).ready(function(){
-	$(".afficherCategorie").click(function(){	
-		$(".champs").css("background-color", "#B7B6B6");		
+	$(".afficherCategorie").click(function(){
+		$(".champs").css("background-color", "#B7B6B6");
 		$(this).css("background-color", "#5B4394");
 		$(".champs").css("color", "black");
 		$(this).css("color", "white");
-		$(".liste").css("color", "black");									
+		$(".liste").css("color", "black");
 	});
 });
 
 $(document).ready(function(){
 	$(".afficherCategorie").click(function(){
-		console.log($(this).children());		
+		console.log($(this).children());
 		$(".champs").children().children("ul").hide();
 		//$(".catego").children().children("ul").hide();
-		$(this).children().children("ul").show();								
+		$(this).children().children("ul").show();
 	});
 });
 
 $(document).ready(function(){
-	$(".afficherSousCategorie").click(function(){	
+	$(".afficherSousCategorie").click(function(){
 		console.log($(this).children());
-		$(".catego").children().children("ul").hide();	
-		$(this).children().children("ul").show();						
+		$(".catego").children().children("ul").hide();
+		$(this).children().children("ul").show();
 	});
 });
 
 
 $(document).ready(function(){
-	$(".afficherTest").click(function(){	
+	$(".afficherTest").click(function(){
 		console.log($(this).children());
-		$(".sous_catego").children().children("ul").hide();	
-		$(this).children().children("ul").show();						
+		$(".sous_catego").children().children("ul").hide();
+		$(this).children().children("ul").show();
 	});
 });
 
@@ -46,7 +46,7 @@ $(document).ready(function(){
 	});
 });*/
 
-			
+
 /*$.ajax({
     url: "/getcat/1",
     type: 'POST',
@@ -60,7 +60,7 @@ $(document).ready(function(){
 	function afficherCategorie() {
 	    document.getElementById("liste").style.visibility="visible";
 	}
-	//$("#categories").children("liste")	
+	//$("#categories").children("liste")
 });*/
 
 
@@ -95,7 +95,7 @@ $(document).ready(function () {
                 $this.data("checked", 1);
             }
         }
-        
+
     });
 });
 
@@ -128,18 +128,18 @@ $(document).ready(function () {
 
 
             var q = $this.data("q");
-            
+
             var x = $this.data("x");
             x++;
 
             var check = [];
-            
+
             $(".num").each(function() {
                 if ($(this).data("checked") == 1) {
                     check.push($(this).attr("id"));
                 }
             });
-            
+
             check.sort();
             justecheck.sort();
 
@@ -149,15 +149,15 @@ $(document).ready(function () {
             if (total.length < 1) {
                 var total = $('#buttonq').data('total');
             }
-            
+
             console.log(total);
 
             if (check.length == justecheck.length) {
                 if(JSON.stringify(check)==JSON.stringify(justecheck)) {
-                    
+
                     score++;
                     $('#truescreen').css("visibility", "visible");
-                } 
+                }
             } else {
                 $('#falsescreen').css("visibility", "visible");
             }
@@ -179,8 +179,8 @@ $(document).ready(function () {
                         })
                         $('#bigend').css("visibility", "visible");
                     }
-                }); 
-            
+                });
+
         };
     });
-});     
+});

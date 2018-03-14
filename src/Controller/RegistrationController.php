@@ -17,7 +17,6 @@ class RegistrationController extends Controller
         // 1) build the form
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
-        dump($request);
         // 2) handle the submit (will only happen on POST)
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -33,10 +32,10 @@ class RegistrationController extends Controller
             return $this->redirectToRoute('login');
         }
         return $this->render(
-            'inscription.html.twig',
+            'security/inscription.html.twig',
             array('form' => $form->createView())
         );
     }
 }
-        
+
 ?>

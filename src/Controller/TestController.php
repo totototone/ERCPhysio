@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Controller;
 
@@ -7,12 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\ChampsClinique;
 use App\Entity\Categorie;
-use App\Entity\Test;
+use App\Entity\TestVideo;
 use App\Entity\Questions;
 use App\Entity\Reponses;
 use App\Entity\CasClinique;
-use App\Entity\Hypotheses;
-use App\Entity\TestSpe;
 
 
 class TestController extends Controller
@@ -20,26 +18,22 @@ class TestController extends Controller
 
 
     /**
-     * @Route("/test", name="test")
+     * @Route("/test/{id}", name="test")
      */
 
-    public function test()
+    public function test($id)
     {
-        $champscliniques = $this->getDoctrine()
-        ->getRepository(ChampsClinique::class)
-        ->findAll();
+        //récupère la première question du test, les suivantes seront chargées en Ajax.
 
-        $categories = $this->getDoctrine()
-        ->getRepository(Categorie::class)
-        ->findAll();
-
-        $tests = $this->getDoctrine()
-        ->getRepository(Test::class)
-        ->findAll();
+        $test = $this->getDoctrine()
+        ->getRepository(TestVideo::class)
+        ->findOneBy(["id" => $id]);
 
         $questions = $this->getDoctrine()
         ->getRepository(Questions::class)
-        ->findAll();
+        ->findOneBy(["idTestVideo" => $id]);
+
+        dump($questions);
 
         $reponses = $this->getDoctrine()
         ->getRepository(Reponses::class)
@@ -49,32 +43,17 @@ class TestController extends Controller
         ->getRepository(CasClinique::class)
         ->findAll();
 
-        $hypotheses = $this->getDoctrine()
-        ->getRepository(Hypotheses::class)
-        ->findAll();
-
-        $testspes = $this->getDoctrine()
-        ->getRepository(TestSpe::class)
-        ->findAll();
 
 
-        dump($reponses);
-        dump($tests);
 
         // $this->get('acme.js_vars')->chartData = $x;
-            
+
         return $this->render('test.html.twig', array(
-            'champscliniques' => $champscliniques,
-            'categorie' => $categories,
 
-            'tests' => $tests,
-            'reponses' => $reponses,
+            'test' => $test,
             'questions' => $questions,
-
-            'cascliniques' => $cascliniques,
-            'hypotheses' => $hypotheses,
-
-            'testspes' => $testspes,
+            'reponses' => $reponses,
+            'cascliniques' => $cascliniques
         ));
     }
 
@@ -95,7 +74,7 @@ class TestController extends Controller
 
         $question = $questions[$num_question-1];
 
-       dump($question); 
+       dump($question);
 
         $reponses = $this->getDoctrine()
         ->getRepository(Reponses::class)
@@ -111,7 +90,7 @@ class TestController extends Controller
 
         $string = "<div id='current' class='b'>";
         $string .= "<div id='numero'>";
-            
+
             $total = 0;
             foreach ($questions as $question) {
                 $total++;
@@ -127,22 +106,22 @@ class TestController extends Controller
         $string .= "</div>";
         $string .= "<div id='question'>";
 
-    
+
         $string .= $question . " :";
 
-        
+
         $string .= "</div>";
         $string .= "<div id='reponses'>";
         $num_reponse = 0;
         foreach ($reponses as $reponse) {
             $num_reponse++;
             $string .= "<div class='blocrep'>";
-            $string .= "<div id='num" . $reponse->getId() . "' class='num'>" . $num_reponse . "</div>";             
+            $string .= "<div id='num" . $reponse->getId() . "' class='num'>" . $num_reponse . "</div>";
             $string .= "<p>" . $reponse->getReponse() . "</p><br>";
             $string .= "</div>";
             array_push($liste, $reponse->getId());
         }
-        
+
         foreach ($reponses as $reponse) {
             if ($reponse->getJuste() == 1) {
                 array_push($juste, $reponse->getId());

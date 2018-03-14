@@ -2,41 +2,40 @@
 {% block body %}
 
 	<div class="container">
-		<!--<h1 id="titre">Champs cliniques</h1>-->
-	
+
 		<div class="champs_clin">
 			{% for champ in champs %}
 			<div class="afficherCategorie champs">{{champ.name}}
-			
+
 				<div class="categories">
-					<ul class="liste">					
+					<ul class="liste">
 						{% for catego in champ.categories %}
 						<li class="afficherSousCategorie catego"><img src="images/fleche.png" class="fleche">{{catego.name}}
-	
+
 							<div class="sous_categories">
 								<ul class="liste2">
 									{% for souscatego in catego.souscategories %}
 										<li class="afficherTest sous_catego"><img src="images/fleche2.png" class="fleche2">{{souscatego.name}}
-	
+
 											<div class="div_test">
 												<ul class="liste3">
-													{% for tests in souscatego.test %}
-														<li class="test"><img src="images/fleche2.png" class="fleche2">{{tests.scenariosName}}</li>
+													{% for test in souscatego.test %}
+														<li class="test"><a href="{{ path('test', {'id': test.id}) }}"><img src="images/fleche2.png" class="fleche2">{{test.name}}</a></li>
 													{% endfor %}
 												</ul>
 											</div>
 										</li>
-									{% endfor %}		
+									{% endfor %}
 								</ul>
 							</div>
 						</li>
-						{% endfor %}		
-					</ul>				
+						{% endfor %}
+					</ul>
 				</div>
 			</div>
 			{% endfor %}
 		</div>
 	</div>
 
-	
+
 {% endblock %}

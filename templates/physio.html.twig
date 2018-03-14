@@ -4,22 +4,28 @@
         <meta charset="UTF-8">
         <title>ERCPhysio</title>
         {% block stylesheets %}
-        <link rel="stylesheet" type="text/css" href="{{ asset('build/app.css') }}">  
+        <link rel="stylesheet" type="text/css" href="{{ asset('build/app.css') }}">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
         {% endblock %}
     </head>
-    
+
     <body>
         <header>
-            <div id="logo"><a href="{{path('accueil')}}">ERCPhysio</a></div>        
-            <a href="{{ path('logout') }}"><input class="btn_deco" type="button" value="Déconnexion"></a>
+            <div id="logo"><a href="{{path('accueil')}}">ERCPhysio</a></div>
+            {% if (is_granted('ROLE_ADMIN')) %}
+              <a href="{{ path('admin') }}"><input class="btn_deco" type="button" value="Admin"></a>
+            {% endif %}
+            {% if (is_granted('ROLE_ADMIN')) or (is_granted('ROLE_USER')) %}
+                <a href="{{ path('logout') }}"><input class="btn_deco" type="button" value="Déconnexion"></a>
+            {% else %}
+                <a href="{{ path('login') }}"><input class="btn_deco" type="button" value="Connexion"></a>
+            {% endif %}
         </header>
         {% block body %}{% endblock %}
-        {% block javascripts %}    	
+        {% block javascripts %}
         <!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
         <script src="{{ asset('build/app.js') }}"></script>
         {% endblock %}
     </body>
 
 </html>
-

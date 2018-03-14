@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User implements UserInterface, \Serializable
-{   
+{
     /**
      * @var int
      *
@@ -31,13 +31,6 @@ class User implements UserInterface, \Serializable
     private $username;
 
     /**
-     * @var int|null
-     *
-     * @ORM\Column(name="role", type="integer", nullable=true)
-     */
-    private $role;
-
-    /**
      * @var \App\Entity\Roles
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\Roles")
@@ -45,7 +38,7 @@ class User implements UserInterface, \Serializable
      *   @ORM\JoinColumn(name="id_roles", referencedColumnName="id")
      * })
      */
-    private $idRoles;
+    private $idRole;
 
     /**
      * @Assert\NotBlank()
@@ -94,13 +87,12 @@ class User implements UserInterface, \Serializable
 
     public function getRoles()
     {
-        if(null !== $this->idRoles && !empty($this->idRoles->getId()) && $this->idRoles->getId() == 2) {
+        if(null !== $this->idRole && !empty($this->idRole->getId()) && $this->idRole->getId() == 2) {
             return array('ROLE_ADMIN');
         }
         else {
             return array('ROLE_USER');
         }
-        
     }
 
     public function eraseCredentials()
@@ -234,26 +226,6 @@ class User implements UserInterface, \Serializable
         $this->plainPassword = $plainPassword;
 
         $this->password = null;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getRole()
-    {
-        return $this->role;
-    }
-
-    /**
-     * @param int|null $role
-     *
-     * @return self
-     */
-    public function setRole($role)
-    {
-        $this->role = $role;
-
-        return $this;
     }
 
     /**

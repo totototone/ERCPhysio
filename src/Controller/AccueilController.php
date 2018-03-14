@@ -23,15 +23,36 @@ class AccueilController extends Controller
         ->getRepository(ChampsClinique::class)
         ->findAll();
 
-       dump($champsCliniques);
-
-        $testVideo = $this->getDoctrine()
-        ->getRepository(TestVideo::class)
-        ->findAll();
-
-        $souscategories = $this->getDoctrine()
-        ->getRepository(SousCategorie::class)
-        ->findAll();
+        //generate an array of all categories that will look like this :
+        /*0 => ChampsClinique {#780 ▼
+          -name: "Cardio-respiratoire"
+          -id: 1
+          +"categories": array:2 [▼
+            0 => Categorie {#822 ▼
+              -name: "Respiratoire"
+              -id: 1
+              -idChampsClinique: ChampsClinique {#780}
+              +"souscategories": array:1 [▼
+                0 => SousCategorie {#859 ▼
+                  -name: "tous les tests"
+                  -id: 9
+                  -idCategorie: Categorie {#822}
+                  +"test": array:3 [▼
+                    0 => TestVideo {#898 ▼
+                      -name: "test1"
+                      -video: "dfff"
+                      -id: 1
+                      -idSousCategorie: SousCategorie {#859}
+                    }
+                    1 => TestVideo {#900 ▶}
+                    2 => TestVideo {#901 ▶}
+                  ]
+                }
+              ]
+            }
+            1 => Categorie {#824 ▶}
+          ]
+        }*/
 
         foreach ($champsCliniques as $key => $ChampsClinique) {
 
@@ -52,26 +73,11 @@ class AccueilController extends Controller
             }
         }
 
-        dump($champsCliniques);
-        
-
-        //dump($categories);
-
-        
-
-        //dump($souscategories);
-
-       
-
-
-
 
         return $this->render('accueil.html.twig', array(
-            'champs' => $champsCliniques 
+            'champs' => $champsCliniques
         ));
-        // replace this line with your own code!
-        //return $this->render('@Maker/demoPage.html.twig', [ 'path' => str_replace($this->getParameter('kernel.project_dir').'/', '', __FILE__) ]);
 
     }
-    
+
 }
