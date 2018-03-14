@@ -25,4 +25,4 @@ easy_admin:
             - { entity: 'Score', rel: 'score'}
             - { entity: 'TestVideo', rel: 'test-video'}
             - { entity: 'User', rel: 'user'}
-            - { label: 'Ajouter des utilisateurs', url: '%router.request_context.base_url%/public/upload' }
+            - { label: 'Ajouter des utilisateurs', url: '%router.request_context.base_url%/ERCPhysio/public/upload' }
