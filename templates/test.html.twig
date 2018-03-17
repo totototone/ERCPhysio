@@ -1,5 +1,12 @@
 {% extends 'physio.html.twig' %}
 {% block body %}
+
+    <div id="video">
+      <video controls style="position:absolute;" src="{{path('accueil')}}/uploads/videos/{{test.video}}">
+
+      </video>
+    </div>
+
     <div id="pres" class="b">
 
       {{test.name}}

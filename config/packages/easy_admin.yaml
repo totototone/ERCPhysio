@@ -1,17 +1,33 @@
 easy_admin:
     entities:
         # List the entity class name you want to manage
-        - App\Entity\ChampsClinique
-        - App\Entity\Categorie
-        - App\Entity\SousCategorie
-        - App\Entity\Question
-        - App\Entity\Reponse
-        - App\Entity\Role
-        - App\Entity\Score
-        - App\Entity\TestVideo
-        - App\Entity\User
-        - App\Entity\Upload
-        - App\Entity\CasClinique
+        ChampsClinique:
+            class: App\Entity\ChampsClinique
+        Categorie:
+            class: App\Entity\Categorie
+        SousCategorie:
+            class: App\Entity\SousCategorie
+        Question:
+            class: App\Entity\Question
+        Reponse:
+            class: App\Entity\Reponse
+        Role:
+            class: App\Entity\Role
+        Score:
+            class: App\Entity\Score
+        User:
+            class: App\Entity\User
+        Upload:
+            class: App\Entity\Upload
+        CasClinique:
+            class: App\Entity\CasClinique
+        TestVideo:
+            class: App\Entity\TestVideo
+            form:
+                fields:
+                    - { property: 'videoFile', type: 'file', label: 'Uploader une vidéo' }
+                    - { property: 'name',  label: 'Nom du test'}
+                    - {property: 'idSousCategorie', label: 'Sous-catégorie'}
             #form: {field : "videos", type : "upload"}
 
     design:

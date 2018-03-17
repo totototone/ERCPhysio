@@ -18,7 +18,7 @@ class Reponse
     /**
      * @var string|null
      *
-     * @ORM\Column(name="reponse", type="string", length=65535, nullable=true)
+     * @ORM\Column(name="reponse", type="string", length=510, nullable=true)
      */
     private $reponse;
 

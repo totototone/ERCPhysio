@@ -25,7 +25,7 @@ class Question
     /**
      * @var string|null
      *
-     * @ORM\Column(name="question", type="string", length=65535, nullable=true)
+     * @ORM\Column(name="question", type="string", length=510, nullable=true)
      */
     private $question;
 

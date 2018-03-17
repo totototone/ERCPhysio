@@ -12,6 +12,8 @@ use App\Entity\Question;
 use App\Entity\Reponse;
 use App\Entity\CasClinique;
 
+use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
+
 
 class TestController extends Controller
 {
@@ -21,7 +23,7 @@ class TestController extends Controller
      * @Route("/test/{id}", name="test")
      */
 
-    public function test($id)
+    public function test($id, \Vich\UploaderBundle\Storage\StorageInterface $storageInterface)
     {
         //récupère la première question du test, les suivantes seront chargées en Ajax.
 
@@ -32,7 +34,6 @@ class TestController extends Controller
         $question = $this->getDoctrine()
         ->getRepository(Question::class)
         ->findOneBy(["testVideo" => $id]);
-
 
         $reponses = $this->getDoctrine()
         ->getRepository(Reponse::class)
